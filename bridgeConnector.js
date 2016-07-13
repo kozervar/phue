@@ -22,8 +22,10 @@ var discoverBridges = function () {
 };
 
 var printBridges = function(bridges) {
-    if(bridges.length != 1)
-        throw new ConnectionError('Currently only one bridge supported. Sorry! :(', 505);
+    if(bridges.length == 0)
+        throw new ConnectionError('No HUE bridges found!', 504);
+    if(bridges.length > 1)
+        throw new ConnectionError('Currently only one bridge supported. Sorry!', 505);
     console.log('Bridge #', 0,': ' + JSON.stringify(bridges[0]));
     return bridges[0];
     //for (var i = 0; i < bridges.length; i++) {
